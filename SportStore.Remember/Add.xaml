@@ -1,0 +1,67 @@
+﻿<Window x:Class="SportStore.Remember.Add"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportStore.Remember"
+        mc:Ignorable="d"
+        Title="Add" Height="450" Width="400">
+    <Grid>
+        <StackPanel Orientation="Horizontal"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center">
+
+            <StackPanel VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Margin="10">
+
+                <StackPanel>
+                    <TextBlock Margin="1" Height="20" Width="100" Text="Имя"/>
+                    <TextBox Name="nameBox"
+                             Margin="1"
+                             Height="20"
+                             Text="{Binding Name}"/>
+                </StackPanel>
+
+                <StackPanel>
+                    <TextBlock  Margin="1"
+                                Height="20"
+                                Text="Стоимость"/>
+                    <TextBox Name="costBox"
+                             Margin="1"
+                             Height="20"
+                             Text="{Binding Cost}">
+
+                    </TextBox>
+
+                </StackPanel>
+
+            </StackPanel>
+
+
+
+            <StackPanel Margin="10"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+
+                <StackPanel>
+                    <TextBlock  Margin="1"
+                                Height="20"
+                                Text="Описание"/>
+                    <TextBox Name="decriptionBox"
+                             Margin="1"
+                             Height="200"
+                             Width="150"
+                             TextWrapping="Wrap"
+                             Text="{Binding Description}"
+                        />
+                    <Button Margin="0 10 0 0"
+                        Height="20"
+                        Content="Сохранить"
+                        Click="saveProductButtonClick"
+                        Background="#f4a261"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>
