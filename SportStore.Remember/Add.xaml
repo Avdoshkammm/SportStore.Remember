@@ -5,9 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SportStore.Remember"
         mc:Ignorable="d"
-        Title="Add" Height="450" Width="400">
+        Title="Add" 
+        WindowStartupLocation="CenterScreen"
+        Height="450" Width="400">
     <Grid>
         <StackPanel Orientation="Horizontal"
+                    
                     VerticalAlignment="Center"
                     HorizontalAlignment="Center">
 

@@ -69,22 +69,11 @@ namespace SportStore.Remember
 
         private void addButton_Click(object sender, RoutedEventArgs e)
         {
-            using (SportStoreRememberContext db = new SportStoreRememberContext())
-            {
                 new Add(null).ShowDialog();
-
-                
-            }
-
-        }
-        private void EditProduct_MouseDoubleClick(object sender, RoutedEventArgs e)
-        {
-            
         }
 
         private void updateSButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Не рабоает, идите лесом :)");
         }
 
         private void productlistView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -106,6 +95,16 @@ namespace SportStore.Remember
                     db.SaveChanges();
                 }
             }
+        }
+
+        private void productlistviev_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            using (SportStoreRememberContext db = new SportStoreRememberContext())
+            {
+                Product p = (sender as ListView).SelectedItem as Product;
+                new Add(p).ShowDialog();
+            }
+
         }
     }
 }

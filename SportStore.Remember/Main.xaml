@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen" 
         Title="Main" Height="450" Width="800"
-        MouseDoubleClick="EditProduct_MouseDoubleClick"
         Background="#f1faee">
     <Grid>
         <Grid.RowDefinitions>
@@ -38,7 +37,8 @@
         <ListView Grid.Row ="1"
 	  x:Name="productlistView"
 	  ScrollViewer.HorizontalScrollBarVisibility="Disabled"
-          HorizontalContentAlignment="Center" SelectionChanged="productlistView_SelectionChanged">
+          HorizontalContentAlignment="Center" 
+                  MouseDoubleClick="productlistviev_MouseDoubleClick">
 
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

@@ -21,14 +21,15 @@ namespace SportStore.Remember
     /// </summary>
     public partial class Add : Window
     {
+        Product? currentProduct;
         public Add(Product p)
         {
             InitializeComponent();
             this.Title = "Добавление товара";
 
-            Product? currentProduct;
+            
 
-            using (SportStoreRememberContext db = new SportStoreRememberContext())
+            //using (SportStoreRememberContext db = new SportStoreRememberContext())
 
             if (p != null)
             {
@@ -55,26 +56,48 @@ namespace SportStore.Remember
                 return;
             }
 
+            //po novoy
             using (SportStoreRememberContext db = new SportStoreRememberContext())
             {
-                try
+                if (currentProduct == null)
                 {
-                    Product product = new Product()
+                    try
                     {
-                        Name = nameBox.Text,
-                        Cost = int.Parse(costBox.Text),
-                        Decription = decriptionBox.Text,
-                    };
+                        Product product = new Product()
+                        {
+                            Name = nameBox.Text,
+                            Cost = int.Parse(costBox.Text),
+                            Decription = decriptionBox.Text,
+                        };
 
-                    db.Products.Add(product);
-                    db.SaveChanges();
+                        db.Products.Add(product);
+                        db.SaveChanges();
 
-                    MessageBox.Show("Товар добавлен");
+                        MessageBox.Show("Товар добавлен");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.InnerException.ToString());
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.InnerException.ToString());
+                    try
+                    {
+
+                        db.Products.Update(currentProduct);
+                        db.SaveChanges();
+
+                        MessageBox.Show("Товар обновлен");
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
+
+                Main mainWindow = Application.Current.Windows.OfType<Main>().FirstOrDefault();
+                (mainWindow.FindName("productlistView") as ListView).ItemsSource = db.Products.ToList();
             }
         }
     }
